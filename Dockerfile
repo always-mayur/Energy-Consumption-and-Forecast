@@ -1,57 +1,40 @@
-# ============================
-# Stage 1: Frontend Build
-# ============================
-FROM node:18-alpine as frontend-builder
+# Stage 1: Build stage
+FROM node:18 as builder
 
-WORKDIR /app/client
-
-# Copy only package files for better caching
-COPY client/package*.json ./
-
-# Install frontend dependencies
-RUN npm ci --omit=dev
-
-# Copy the frontend source code
-COPY client ./
-
-# Build the React frontend
-RUN npm run build
-
-
-# ============================
-# Stage 2: Backend Build
-# ============================
-FROM node:18 as backend-builder
-
+# Set the working directory in the container
 WORKDIR /app
 
-# Copy only package files for better caching
+# Copy package files first for better caching
 COPY package*.json ./
 
-# Install backend dependencies
-RUN npm ci --omit=dev
+# Install root-level dependencies
+RUN npm install --production
+RUN npm install luxon --save
 
-# Copy the entire backend code (excluding unnecessary files)
+# Copy the entire project to the container
 COPY . .
 
-# ============================
-# Stage 3: Production Image
-# ============================
-FROM node:18-slim
+# Install client dependencies
+WORKDIR /app/client
+RUN npm install --production
 
+# Build the client
+RUN npm run build
+
+# Go back to root working directory
 WORKDIR /app
 
-# Set environment variable for production
-ENV NODE_ENV=production
+# Stage 2: Production stage
+FROM node:18-slim
 
-# Copy backend from build stage
-COPY --from=backend-builder /app .
+# Set the working directory in the container
+WORKDIR /app
 
-# Copy frontend build files from frontend-builder stage
-COPY --from=frontend-builder /app/client/build ./client/build
+# Copy only necessary files from the build stage
+COPY --from=builder /app ./
 
 # Expose necessary ports
 EXPOSE 3000 5000
 
-# Command to run the application
-CMD ["npm","run","dev"]
+# Command to run the app using npm run dev
+CMD ["npm", "run", "dev"]

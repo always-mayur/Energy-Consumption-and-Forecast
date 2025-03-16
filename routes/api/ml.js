@@ -11,7 +11,8 @@ const optimizationService = require("../../ml-modules/optimization-service")
 
 // Import models
 const Appliance = require("../../models/Appliance")
-const Consumption = require("../../models/consumption") // Updated path to match the file name
+// const Consumption = require("../../models/consumption") // Updated path to match the file name
+const Consumption = require("../../models/Consumption") // Ensure the correct case
 
 // @route   GET api/ml/forecast/:type
 // @desc    Get energy usage forecast
