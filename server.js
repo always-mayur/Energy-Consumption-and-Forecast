@@ -35,6 +35,10 @@ require("./config/passport")(passport)
 app.set("view engine", "ejs")
 app.set("views", path.join(__dirname, "views"))
 
+// ML routes
+const mlRoutes = require("./routes/api/ml")
+app.use("/api/ml", mlRoutes)
+
 // Define Routes
 app.use("/api/users", require("./routes/api/users"))
 app.use("/api/auth", require("./routes/api/auth"))

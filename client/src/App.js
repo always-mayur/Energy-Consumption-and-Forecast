@@ -1,24 +1,26 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-import { ThemeProvider } from "@mui/material/styles"
 import CssBaseline from "@mui/material/CssBaseline"
+import { ThemeProvider } from "@mui/material/styles"
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom"
 import theme from "./theme"
 
 // Components
-import Navbar from "./components/layout/Navbar"
-import Footer from "./components/layout/Footer"
-import Home from "./components/pages/Home"
-import Dashboard from "./components/pages/Dashboard"
-import Appliances from "./components/pages/Appliances"
-import Rooms from "./components/pages/Rooms"
-import CostCalculation from "./components/pages/CostCalculation"
-import Budget from "./components/pages/Budget"
 import Login from "./components/auth/Login"
 import Register from "./components/auth/Register"
+import Footer from "./components/layout/Footer"
+import Navbar from "./components/layout/Navbar"
+import AdvancedForecasting from "./components/pages/AdvancedForecasting"; // Added import
+import AdvancedOptimization from "./components/pages/AdvancedOptimization"; // Added import
+import Appliances from "./components/pages/Appliances"
+import Budget from "./components/pages/Budget"
+import CostCalculation from "./components/pages/CostCalculation"
+import Dashboard from "./components/pages/Dashboard"
+import Home from "./components/pages/Home"
+import Rooms from "./components/pages/Rooms"
 
 // Context
+import PrivateRoute from "./components/routing/PrivateRoute"
 import { AuthProvider } from "./context/AuthContext"
 import { EnergyProvider } from "./context/EnergyContext"
-import PrivateRoute from "./components/routing/PrivateRoute"
 
 function App() {
   return (
@@ -73,6 +75,22 @@ function App() {
                     </PrivateRoute>
                   }
                 />
+                <Route
+                  path="/advanced-forecasting"
+                  element={
+                    <PrivateRoute>
+                      <AdvancedForecasting />
+                    </PrivateRoute>
+                  }
+                /> {/* Added route */}
+                <Route
+                  path="/advanced-optimization"
+                  element={
+                    <PrivateRoute>
+                      <AdvancedOptimization />
+                    </PrivateRoute>
+                  }
+                /> {/* Added route */}
               </Routes>
             </div>
             <Footer />

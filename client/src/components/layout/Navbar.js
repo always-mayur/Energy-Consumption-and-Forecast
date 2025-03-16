@@ -31,7 +31,13 @@ const MainNavbar = () => {
       <Nav.Link as={Link} to="/budget">
         Budget
       </Nav.Link>
-      <Nav.Item className="d-flex align-items-center push-end">
+      <Nav.Link as={Link} to="/advanced-forecasting">
+        Advanced Forecasting
+      </Nav.Link> {/* Added link */}
+      <Nav.Link as={Link} to="/advanced-optimization">
+        Advanced Optimization
+      </Nav.Link> {/* Added link */}
+      <Nav.Item className="d-flex align-items-center me-auto ">
         <span className="text-light me-2">Hello, {user && user.name}</span>
         <Button variant="outline-light" size="sm" onClick={onLogout}>
           Logout
