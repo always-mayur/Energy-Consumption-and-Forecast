@@ -74,4 +74,27 @@ The ML modules implement several algorithms:
 - **Integration with IoT:** Direct data fetching from smart home devices.  
 - **Enhanced User Profiles:** Personalized energy insights and tips.  
 
+## Web-Page Snapshots
+
+### Dashboard View  
+![Home](https://github.com/always-mayur/Energy-Consumption-and-Forecast/blob/main/client/public/Screenshot%20(123).png?raw=true)
+![Home](https://github.com/always-mayur/Energy-Consumption-and-Forecast/blob/main/client/public/Screenshot%20(124).png?raw=true)
+
+### Dashboard View 
+![Dashboard](https://github.com/always-mayur/Energy-Consumption-and-Forecast/blob/main/client/public/Screenshot%20(127).png?raw=true)
+
+### Appliance List  
+![Appliance List](https://github.com/always-mayur/Energy-Consumption-and-Forecast/blob/main/client/public/Screenshot%20(128).png?raw=true)
+
+
+### Rooms List  
+![Rooms List](https://github.com/always-mayur/Energy-Consumption-and-Forecast/blob/main/client/public/Screenshot%20(129).png?raw=true)
+
+### Emergy Consumption Forecast  
+![Forecast](https://github.com/always-mayur/Energy-Consumption-and-Forecast/blob/main/client/public/Screenshot%20(131).png?raw=true)
+
+### Energy Optimization 
+![Optimization](https://github.com/always-mayur/Energy-Consumption-and-Forecast/blob/main/client/public/Screenshot%20(132).png?raw=true)
+
+
   
